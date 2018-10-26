@@ -1,11 +1,14 @@
-var express = require('Express');
+var express = require('express');
 var app = express();
+app.set('view engine' , 'pug');
+app.set('views' , './views');
 
-app.all('/' , function(req , res){
-    res.send('all');
+var id = require('./id.js')
+
+app.use('/id' , id);
+
+app.get('/pug' , function(req , res){
+    res.render('./first');
 });
-//both index.js and things.js should be in same directory
-//var things = require('./things.js');
-//app.use('/', things);
 
-app.listen(3000);
+app.listen(3000)

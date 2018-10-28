@@ -3,12 +3,6 @@ var app = express();
 app.set('view engine' , 'pug');
 app.set('views' , './views');
 
-var id = require('./id.js')
-
-app.use('/id' , id);
-
-app.get('/pug' , function(req , res){
-    res.render('./first');
-});
-
-app.listen(3000)
+var links = require('./links.js');
+app.use('/' , links);
+app.listen('3000');
